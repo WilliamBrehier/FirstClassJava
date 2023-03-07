@@ -1,6 +1,7 @@
 package brehier.airbnb.outils;
 import brehier.airbnb.outils.CompareInterface;
 
+// la classe générique ne concerne que les élément <T> qui sont AU MOINS des éléments qui ont le contrat CompareInterface
 public class CompareGeneric<T extends CompareInterface> {
 
     //Attributs de type T = générique
@@ -23,9 +24,4 @@ public class CompareGeneric<T extends CompareInterface> {
             return obj2;
         }
     }
-
-
-
-
-
 }

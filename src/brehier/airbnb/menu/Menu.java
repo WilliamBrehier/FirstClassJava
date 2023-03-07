@@ -9,8 +9,10 @@ import brehier.airbnb.logement.Appartement;
 import brehier.airbnb.logement.Logement;
 import brehier.airbnb.logement.Maison;
 import brehier.airbnb.outils.CompareGeneric;
+import brehier.airbnb.outils.CompareGenericMultiple;
 import brehier.airbnb.outils.LireFichierXML;
 import brehier.airbnb.reservations.Reservation;
+import brehier.airbnb.reservations.Sejour;
 import brehier.airbnb.utilisateurs.Hote;
 import brehier.airbnb.utilisateurs.Personne;
 import brehier.airbnb.utilisateurs.Voyageur;
@@ -63,10 +65,23 @@ public class Menu {
 
 		// 2.3 classe générique pour Hote delaiReponse
 		Hote hote1 = new Hote("Jean", "Dupont", 25, 1);
-		Hote hote2 = new Hote("Jeanne", "Dupont", 30, 2);
+		Hote hote2 = new Hote("Jeanne", "Dupont", 30, 7);
+		Hote hote3 = new Hote("Jean", "Dupont", 25, 3);
+		Hote hote4 = new Hote("Jeanne", "Dupont", 30, 4);
 
 		CompareGeneric<Hote> hoteCompareGeneric = new CompareGeneric<>(hote1, hote2);
 		Hote hoteHigher = hoteCompareGeneric.getHigher();
+
+		// 3 classe générique pour des choix d'objects multiples
+		ArrayList<Hote> hoteArrayList = new ArrayList<>();
+
+
+		CompareGenericMultiple<Hote> hoteCompareGenericMultiple = new CompareGenericMultiple<>(hoteArrayList);
+		hoteCompareGenericMultiple.add(hote1);
+		hoteCompareGenericMultiple.add(hote2);
+		hoteCompareGenericMultiple.add(hote3);
+		hoteCompareGenericMultiple.add(hote4);
+		Hote hoteHigherMultiple = hoteCompareGenericMultiple.getHigher();
 
 
 		scanner.close();
