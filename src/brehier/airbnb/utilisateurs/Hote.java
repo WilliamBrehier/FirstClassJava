@@ -31,6 +31,11 @@ public class Hote extends Personne{
     }
 
     @Override
+    public int getElementToCompare() {
+        return delaiDeReponse;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

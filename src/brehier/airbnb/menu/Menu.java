@@ -8,9 +8,11 @@ import java.util.Scanner;
 import brehier.airbnb.logement.Appartement;
 import brehier.airbnb.logement.Logement;
 import brehier.airbnb.logement.Maison;
+import brehier.airbnb.outils.CompareGeneric;
 import brehier.airbnb.outils.LireFichierXML;
 import brehier.airbnb.reservations.Reservation;
 import brehier.airbnb.utilisateurs.Hote;
+import brehier.airbnb.utilisateurs.Personne;
 import brehier.airbnb.utilisateurs.Voyageur;
 
 
@@ -39,14 +41,33 @@ public class Menu {
 		//Appartement appartement = findAppartementByName("Appartement 12");
 
 // 1.2° - Deuxième méthode (pas de généricité)
-//		Maison maison1 = (Maison) findLogementByName("Maison 1");
-//		Appartement appartement1 = (Appartement) findLogementByName("Appartement 1");
+		Maison maison1 = (Maison) findLogementByName("Maison 1");
+		Appartement appartement1 = (Appartement) findLogementByName("Appartement 1");
 
 // 1.3° - Troisième méthode , l'objectif est d'éviter de caster l'object (Maison) dans l'appel de la fonction (généricité)
-//		Maison maison2 = findLogementByNameWithGenericity("Maison 1");
-//		Appartement appartement2 = findLogementByNameWithGenericity("Appartement 1");
+		Maison maison2 = findLogementByNameWithGenericity("Maison 2");
+		Appartement appartement2 = findLogementByNameWithGenericity("Appartement 2");
 
 		//listerMenu();
+
+		// 2.1 classe générique pour Logement tarif par nuit
+		CompareGeneric<Logement> logementCompareGeneric = new CompareGeneric<>(maison1, maison2);
+		Logement logementHigher = logementCompareGeneric.getHigher();
+
+		// 2.2 classe générique pour Personne age
+		Personne personne1 = new Personne("Jean", "Dupont", 25);
+		Personne personne2 = new Personne("Jeanne", "Dupont", 30);
+
+		CompareGeneric<Personne> personneCompareGeneric = new CompareGeneric<>(personne1, personne2);
+		Personne personneHigher = personneCompareGeneric.getHigher();
+
+		// 2.3 classe générique pour Hote delaiReponse
+		Hote hote1 = new Hote("Jean", "Dupont", 25, 1);
+		Hote hote2 = new Hote("Jeanne", "Dupont", 30, 2);
+
+		CompareGeneric<Hote> hoteCompareGeneric = new CompareGeneric<>(hote1, hote2);
+		Hote hoteHigher = hoteCompareGeneric.getHigher();
+
 
 		scanner.close();
 	}
@@ -134,8 +155,6 @@ public class Menu {
 		System.out.println("pas de logement avec ce nom : " + name);
 		return null;
 	}
-
-
 
 
 	private static void init() {

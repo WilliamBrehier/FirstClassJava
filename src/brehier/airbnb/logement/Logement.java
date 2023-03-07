@@ -1,10 +1,12 @@
 package brehier.airbnb.logement;
 
+import brehier.airbnb.outils.CompareGeneric;
 import brehier.airbnb.utilisateurs.Hote;
 import brehier.airbnb.utilisateurs.Personne;
 import brehier.airbnb.menu.Menu;
+import brehier.airbnb.outils.CompareInterface;
 
-public abstract class Logement {
+public abstract class Logement implements CompareInterface{
 
     //Attributs
     //private Personne hote;
@@ -32,6 +34,10 @@ public abstract class Logement {
         hote.afficher();
         System.out.println("\nLe logement est situé au " + adresse);
         System.out.println("Superficie : " + superficie + " m²");
+    }
+
+    public int getElementToCompare(){
+        return tarifParNuit;
     }
 
     //Méthode => Getters + Setters

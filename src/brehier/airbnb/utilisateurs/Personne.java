@@ -1,8 +1,9 @@
 package brehier.airbnb.utilisateurs;
+import brehier.airbnb.outils.CompareInterface;
 
 import java.util.Objects;
 
-public class Personne {
+public class Personne implements CompareInterface{
 
     //Attributs
     private String prenom;
@@ -32,6 +33,10 @@ public class Personne {
     //Méthode
     public void afficher(){
         System.out.print(prenom + nom + "(" + age + " ans)");
+    }
+
+    public int getElementToCompare(){
+        return age;
     }
 
     @Override
