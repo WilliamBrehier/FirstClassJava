@@ -2,6 +2,7 @@ package brehier.airbnb.menu;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 import brehier.airbnb.logement.Appartement;
@@ -24,7 +25,7 @@ public class Menu {
 
 	public static void main(String[] args) {
 
-		System.out.println("Bienvenue chez AirBnB");
+		//System.out.println("Bienvenue chez AirBnB");
 
 		scanner = new Scanner(System.in);
 	
@@ -32,22 +33,20 @@ public class Menu {
 
 		LireXMLDOM.read();
 
-
-		// 1.1° - Première méthode (pas de généricité)
-		//Maison maison = Maison.findMaisonByName("Maison 1");
+//	1.1° - Première méthode (pas de généricité)
+//		Maison maison = findMaisonByName("Maison 1");
+//		System.out.println(maison.getName());
 		//Appartement appartement = findAppartementByName("Appartement 12");
 
 // 1.2° - Deuxième méthode (pas de généricité)
-		Maison maison1 = (Maison) findLogementByName("Maison 1");
-		Appartement appartement1 = (Appartement) findLogementByName("Appartement 1");
+//		Maison maison1 = (Maison) findLogementByName("Maison 1");
+//		Appartement appartement1 = (Appartement) findLogementByName("Appartement 1");
 
-// 1.3° - Troisième méthode (généricité)
-		//Maison maison2 = findLogementByNameWithGenericity("Maison 1");
-		//Appartement appartement2 = findLogementByNameWithGenericity("Appartement 1");
+// 1.3° - Troisième méthode , l'objectif est d'éviter de caster l'object (Maison) dans l'appel de la fonction (généricité)
+//		Maison maison2 = findLogementByNameWithGenericity("Maison 1");
+//		Appartement appartement2 = findLogementByNameWithGenericity("Appartement 1");
 
-
-
-		listerMenu();
+		//listerMenu();
 
 		scanner.close();
 	}
@@ -99,6 +98,18 @@ public class Menu {
 		return choixUtilisateur;
 	}
 
+	private static Maison findMaisonByName(String name) {
+
+		for (Logement logement: listLogements) {
+			if(logement != null && Objects.equals(logement.getName(), name)) {
+				if (logement instanceof Maison) {
+					return (Maison) logement;
+				}
+			}
+		}
+		return null;
+	}
+
 	public static Logement findLogementByName(String name){
 		for (Logement logement : Menu.listLogements) {
 			if(logement.getName().equals(name)){
@@ -111,15 +122,17 @@ public class Menu {
 		return null;
 	}
 
-	public static <T extends Logement> void findLogementByNameWithGenericity(T obj, String name){
+	//On cherche un logement, T représente tous les enfants de logement, et on veut retourner T ou null si pas de logement correspondant
+	public static <T extends Logement> T findLogementByNameWithGenericity(String name){
 		for (Logement logement : Menu.listLogements) {
 			if(logement.getName().equals(name)){
 				System.out.println("un logement existe déjà avec ce nom " + name);
 				logement.afficher();
-				obj = (T) logement;
+				return (T) logement;
 			}
 		}
 		System.out.println("pas de logement avec ce nom : " + name);
+		return null;
 	}
 
 
