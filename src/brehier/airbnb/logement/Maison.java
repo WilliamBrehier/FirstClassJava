@@ -5,8 +5,8 @@ import brehier.airbnb.utilisateurs.Hote;
 
 public class Maison extends Logement{
     //Attributs spécifiques à Maison
-    private int superficieJardin;
-    private boolean possedePiscine;
+    private final int superficieJardin;
+    private final boolean possedePiscine;
 
     //Constructeur
     public Maison (String name, Hote paramHote, int paramTarifParNuit, String paramAdresse, int paramSuperficie, int paramNbVoyageursMax, int paramSuperficieJardin, boolean paramPossedePiscine){
@@ -33,14 +33,4 @@ public class Maison extends Logement{
             System.out.println("La maison ne possède pas de piscine.");
         }
     }
-
-//    public static Maison findMaisonByName(String name){
-//        for (Logement logement : Menu.listLogements) {
-//            if(logement instanceof Maison){
-//                if(logement.getName().equals(name)){
-//                    return Maison maison;
-//                }
-//            }
-//        }
-//    }
 }

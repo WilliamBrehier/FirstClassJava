@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class SejourCourt extends Sejour implements ConditionsTarifairesInterface{
 
-    public SejourCourt(Date paramDateArrivee, int paramNbNuits, Logement paramLogement, int paramNbVoyageurs) {
+    SejourCourt(Date paramDateArrivee, int paramNbNuits, Logement paramLogement, int paramNbVoyageurs) {
         super(paramDateArrivee, paramNbNuits, paramLogement, paramNbVoyageurs);
     }
 

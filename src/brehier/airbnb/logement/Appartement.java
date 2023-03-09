@@ -4,8 +4,8 @@ import brehier.airbnb.utilisateurs.Hote;
 
 public class Appartement extends Logement {
     //Attribut spécifique à appartement
-    private int numeroEtage;
-    private int superficieBalcon;
+    private final int numeroEtage;
+    private final int superficieBalcon;
 
     //Constructeur
     public Appartement(String name, Hote paramHote, int paramTarifParNuit, String paramAdresse, int paramSuperficie, int paramNbVoyageursMax, int paramNumeroEtage, int paramSuperficieBalcon){

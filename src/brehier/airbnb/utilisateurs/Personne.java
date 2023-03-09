@@ -6,21 +6,11 @@ import java.util.Objects;
 public class Personne implements CompareInterface{
 
     //Attributs
-    private String prenom;
-    private String nom;
-    private int age;
+    private final String prenom;
+    private final String nom;
+    private final int age;
 
-    public String getPrenom() {
-        return prenom;
-    }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public int getAge() {
-        return age;
-    }
 
     //Constructeur
     public Personne(String paramPrenom, String paramNom , int paramAge){
@@ -36,6 +26,18 @@ public class Personne implements CompareInterface{
     }
 
     public int getElementToCompare(){
+        return age;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public int getAge() {
         return age;
     }
 

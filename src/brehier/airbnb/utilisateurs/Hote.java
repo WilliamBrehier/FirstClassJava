@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Hote extends Personne{
     //Attributs spécifiques à hôte
-    private int delaiDeReponse;
+    private final int delaiDeReponse;
 
     //Constructeur
     public Hote(String paramPrenom, String paramNom , int paramAge, int paramDelaiDeReponse){

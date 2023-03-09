@@ -11,11 +11,11 @@ public abstract class Logement implements CompareInterface{
     //Attributs
     //private Personne hote;
     private String name;
-    private Hote hote;
-    private int tarifParNuit;
-    private String adresse;
-    private int superficie;
-    private int nbVoyageursMax;
+    private final Hote hote;
+    private final int tarifParNuit;
+    private final String adresse;
+    private final int superficie;
+    private final int nbVoyageursMax;
 
 
     //Constructeur

@@ -3,6 +3,7 @@ package brehier.airbnb;
 import brehier.airbnb.logement.Appartement;
 import brehier.airbnb.logement.Logement;
 import brehier.airbnb.logement.Maison;
+import brehier.airbnb.outils.AirBnBData;
 import brehier.airbnb.outils.CreateSejour;
 import brehier.airbnb.outils.MaDate;
 import brehier.airbnb.outils.Utile;
@@ -20,11 +21,15 @@ public class Main {
         Personne maPersonne1 = new Personne("Willou ", "LaCartouche ", 30);
         Personne maPersonne2 = new Personne("Jean ", "LaPomme ", 40);
 
+        //Singleton utilisation
+        AirBnBData maData = AirBnBData.getInstance();
+        maData.getLogement().afficher();
+
         Hote monHote1 = new Hote("Willou", "LaCartouche", 30, 2);
 
         Voyageur monVoyageur1 = new Voyageur("Victor", "LeBasque", 18);
 
-        //Maison maMaison1 = new Maison(monHote1, 100, "1 rue de la maison", 200, 10, 500, true);
+        Maison maMaison1 = new Maison("maison 1",monHote1, 100, "1 rue de la maison", 200, 10, 500, true);
 
         //Appartement monAppartement1 = new Appartement(monHote1, 50, "1 rue de lappartement", 50, 2, 4, 0);
 
@@ -40,8 +45,13 @@ public class Main {
 
         Date maDate2 = new MaDate(14,2,2023);
 
-        Sejour sejour;
+
+        //Sejour sejour;
         PrintWriter writer;
+
+        //Factory => même package que les filles concernées
+        Sejour sejour = SejourFactory.getSejour(maDate2, nbNuits, maMaison1,nbVoyageurs);
+
 
         //Conditions
         //sejour = CreateSejour.getSejour(maMaison1, nbNuits, nbVoyageurs, maDate2);
